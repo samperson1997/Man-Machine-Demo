@@ -1,0 +1,52 @@
+.whole-page {
+    background-image: url("../img/bg.jpg");
+    padding: 30% 0;
+    background-size: 100% 100%;
+}
+
+#setting-wrapper {
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 1%;
+    height: 80%;
+}
+
+#task-wrapper {
+    position: fixed;
+    top: 10%;
+    left: 60%;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 1%;
+    height: 80%;
+}
+
+#setting-table, #task-table {
+    text-align: center;
+}
+
+#setting-table td, #setting-table th {
+    width: 100px;
+    padding: 0 10px;
+}
+
+#task-table td, #task-table th{
+    width: 100px;
+    padding: 0 10px;
+}
+
+#setting-tip {
+    color: red;
+    font-size: 12px;
+}
+
+input {
+    width: 100%;
+}
+
+.button-wrapper {
+    margin: 10% 35%;
+}

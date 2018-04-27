@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html style="width: 100%">
+
+<head>
+    <meta charset="UTF-8">
+    <title>人机大战 Demo</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/origin.css">
+    <link rel="stylesheet" href="css/button.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/setting-table.js"></script>
+    <script src="js/task-table.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="whole-page"></div>
+
+    <div id="setting-wrapper">
+        <h1>任务列表</h1>
+
+        <div>
+            <table id="setting-table">
+                <tr>
+                    <th>ID</th>
+                    <th>subject</th>
+                    <th>tool</th>
+                    <th>time_budget</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="setting-id" id="setting-id"></td>
+                    <td><input type="text" name="setting-subject" id="setting-subject"></td>
+                    <td><input type="text" name="setting-tool" id="setting-tool"></td>
+                    <td><input type="text" name="setting-time" id="setting-time"></td>
+                    <td>
+                        <button class="button-blue" onclick="addRow()">添加任务</button>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        <p id="setting-tip"></p>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="task-wrapper">
+        <h1>待执行任务组</h1>
+
+        <div>
+            <table id="task-table">
+                <tr>
+                    <th>ID</th>
+                    <th>subject</th>
+                    <th>tool</th>
+                    <th>time_budget</th>
+                </tr>
+            </table>
+            <div class="button-wrapper">
+                <button class="button-red" onclick="emptyTask()">清空</button>
+                <button class="button-blue" onclick="executeTask()">执行</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+
+</html>

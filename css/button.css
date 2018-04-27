@@ -6,8 +6,7 @@
     border-radius: 5px;
     background-color: #cc0000;
     display: inline-block;
-    padding: 0.4% 1.2%;
-
+    padding: 1px 10px;
     font-size: 90%;
 }
 
@@ -17,7 +16,7 @@
 
 .button-red:hover {
     color: #cc0000;
-    background-color: #FFF;
+    background-color: transparent;
     border: 1px solid #cc0000;
 }
 
@@ -36,8 +35,7 @@
     background-color: #0080ff;
     display: inline-block;
     margin: 0 1%;
-    padding: 0.4% 1.2%;
-
+    padding: 1px 10px;
     font-size: 90%;
 }
 
@@ -47,7 +45,7 @@
 
 .button-blue:hover {
     color: #0080ff;
-    background-color: #FFF;
+    background-color: transparent;
     border: 1px solid #0080ff;
 }
 

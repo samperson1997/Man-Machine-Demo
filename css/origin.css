@@ -2,17 +2,3 @@
     margin: 0;
     padding: 0;
 }
-
-a {
-    color: #0080ff;
-    font-style: normal;
-    text-decoration-line: none;
-}
-
-a:hover,
-a:link,
-a:visited {
-    color: #0080ff;
-    font-style: normal;
-    text-decoration: none;
-}
