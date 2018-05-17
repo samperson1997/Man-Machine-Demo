@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html style="width: 100%">
+
+<head>
+    <meta charset="UTF-8">
+    <title>人机大战 Demo</title>
+    <link rel="stylesheet" href="css/origin.css">
+    <link rel="stylesheet" href="css/button.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="css/origin.css">
+    <link rel="stylesheet" href="css/button.css">
+</head>
+
+<body>
+<header>
+    <div class="whole-page"></div>
+    <div id="results-wrapper">
+        <table id="top-table">
+            <tr>
+                <th></th>
+                <th>总分</th>
+                <th>BC</th>
+                <th>MC</th>
+            </tr>
+            <tr>
+                <th>Randoop</th>
+                <th>80</th>
+                <th>70</th>
+                <th>90</th>
+            </tr>
+            <tr>
+                <th>Evosuite</th>
+                <th>75</th>
+                <th>80</th>
+                <th>70</th>
+            </tr>
+            <tr>
+                <th>human1</th>
+                <th>25</th>
+                <th>20</th>
+                <th>30</th>
+            </tr>
+            <tr>
+                <th>human2</th>
+                <th>50</th>
+                <th>40</th>
+                <th>60</th>
+            </tr>
+            <tr>
+                <th>human3</th>
+                <th>45</th>
+                <th>40</th>
+                <th>50</th>
+            </tr>
+        </table>
+    </div>
+    <div id="chart-wrapper">
+        <div id="chart" style="width:100%; height: 300px;">
+        </div>
+    </div>
+
+    <div id="table-wrapper">
+        <table id="bottom-table">
+            <tr>
+                <th>ID</th>
+                <th>subject</th>
+                <th>tool</th>
+                <th>time_budget(s)</th>
+                <th>coverage_score</th>
+                <th>mutation_score</th>
+                <th>total_score</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>MoreTriangle</td>
+                <td>Randoop</td>
+                <td>60</td>
+                <td>70</td>
+                <td>90</td>
+                <td>80</td>
+            </tr>
+			<tr>
+                <td>2</td>
+                <td>MoreTriangle</td>
+                <td>Evosuite</td>
+                <td>60</td>
+                <td>80</td>
+                <td>70</td>
+                <td>75</td>
+            </tr>
+
+			
+        </table>
+
+        <div class="button-wrapper">
+            <button class="button-blue">生成报告</button>
+        </div>
+    </div>
+</header>
+
+</body>
+
+</html>
+
+<script src="js/echarts.js"></script>
+<script src="js/chart.js"></script>
