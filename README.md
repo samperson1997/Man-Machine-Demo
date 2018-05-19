@@ -1,5 +1,5 @@
 # Man-Machine-Web-Demo
-This is a demo project for man vs machine contest of Developer Testing.<br>
+This is a main.java.demo project for man vs machine contest of Developer Testing.<br>
 Backend codes (another student's graduation project) are written by himself.
 
 ### 系统前后端连接接口
