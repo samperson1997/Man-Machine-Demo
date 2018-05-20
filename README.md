@@ -1,6 +1,6 @@
 # Man-Machine-Web-Demo
-This is a main.java.demo project for man vs machine contest of Developer Testing.<br>
-Backend codes (another student's graduation project) are written by himself.
+This is a demo project for man vs machine contest of Developer Testing.<br>
+Back end chore codes (another student's graduation project) are written by himself.
 
 ### 系统前后端连接接口
 1.配置任务进任务组后点“执行”后调的执行的方法（传递任务组数组）:

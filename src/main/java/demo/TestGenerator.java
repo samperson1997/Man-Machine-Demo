@@ -1,4 +1,4 @@
-package main.java.demo;
+package demo;
 
 import java.io.BufferedReader;
 import java.io.File;

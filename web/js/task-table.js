@@ -3,18 +3,18 @@ function executeTask() {
     console.log(taskGroup)
 
     $.ajax({
-        type: "POST",
-        url: "/start",
-        contentType: "application/x-www-form-urlencoded",
-        data: {
-            "taskGroup": taskGroup
-        },
+        method: "POST",
+        url: "/api/start",
+        contentType: "application/json;charset=utf8",
+        data: JSON.stringify({
+            taskGroup: taskGroup
+        }),
         dataType: "json",
         success: function (data) {
-            alert("[用于测试] 内容为" + taskGroup + "的任务组已开始执行, 结果为" + data.message)
-            // window.location.href = "./result.html";
+            alert("[用于测试] 内容为" + JSON.stringify(taskGroup) + "的任务组已开始执行, 结果为" + data.message)
+            window.location.href = "./result.html";
         }
-    })
+    });
 }
 
 /**

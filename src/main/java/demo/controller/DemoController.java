@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 
 @Controller
+@RequestMapping("/api")
 public class DemoController {
 
     private DatabaseUtil databaseUtil = new DatabaseUtil();
@@ -57,8 +58,11 @@ public class DemoController {
 //        }
 
         // 测试用
-        voList.add(new ScoreVO(98, 95, 96));
-        voList.add(new ScoreVO(96, 93, 91));
+        voList.add(new ScoreVO("Randoop", Math.random() * 100, Math.random() * 100, Math.random() * 100));
+        voList.add(new ScoreVO("Evosuite", Math.random() * 100, Math.random() * 100, Math.random() * 100));
+        voList.add(new ScoreVO("human1", Math.random() * 100, Math.random() * 100, Math.random() * 100));
+        voList.add(new ScoreVO("human2", Math.random() * 100, Math.random() * 100, Math.random() * 100));
+        voList.add(new ScoreVO("human3", Math.random() * 100, Math.random() * 100, Math.random() * 100));
 
         return voList;
     }

@@ -2,6 +2,7 @@ package demo.vo;
 
 public class ScoreVO {
 
+    private String name;
     private double BC;
     private double MC;
     private double total;
@@ -9,10 +10,19 @@ public class ScoreVO {
     public ScoreVO() {
     }
 
-    public ScoreVO(double BC, double MC, double total) {
+    public ScoreVO(String name, double BC, double MC, double total) {
+        this.name = name;
         this.BC = BC;
         this.MC = MC;
         this.total = total;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getBC() {
