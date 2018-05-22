@@ -1,7 +1,10 @@
 package demo.controller;
 
+import demo.MyThread;
 import demo.excel.ExcelGenerate;
+import demo.htmlparser.entity.ResultEntity;
 import demo.mysql.DatabaseUtil;
+import demo.po.ScorePO;
 import demo.vo.ResultMessageVO;
 import demo.vo.ResultVO;
 import demo.vo.ScoreVO;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 
 @Controller
+@RequestMapping("/api")
 public class DemoController {
 
     private DatabaseUtil databaseUtil = new DatabaseUtil();
@@ -34,6 +38,8 @@ public class DemoController {
     @ResponseBody
     public static ResultMessageVO startThread(@RequestBody TaskGroupVO taskGroup) {
         // TODO 转化taskGroup为二维数组
+        String[][] taskGroupArray = taskGroup.getTaskGroup();
+        MyThread.startThread(taskGroupArray);
         return new ResultMessageVO(true);
     }
 
@@ -51,14 +57,19 @@ public class DemoController {
     public ArrayList<ScoreVO> getScoreFromDatabase() {
         ArrayList<ScoreVO> voList = new ArrayList<>();
 
-//        ArrayList<ScorePO> poList = databaseUtil.getScoreFromDatabase();
-//        for (ScorePO po : poList) {
-//            voList.add(new ScoreVO(po.getBC(), po.getMC(), po.getTotal()));
-//        }
+        ArrayList<ScorePO> RpoList = databaseUtil.getScoreFromDatabase("Randoop");
+        for (ScorePO po : RpoList) {
+            voList.add(new ScoreVO("Randoop",po.getBC(), po.getMC(), po.getTotal()));
+        }
+        ArrayList<ScorePO> EpoList = databaseUtil.getScoreFromDatabase("Evosuite");
+        for (ScorePO po : EpoList) {
+            voList.add(new ScoreVO("Evosuite",po.getBC(), po.getMC(), po.getTotal()));
+        }
 
-        // 测试用
-        voList.add(new ScoreVO(98, 95, 96));
-        voList.add(new ScoreVO(96, 93, 91));
+        //human score test data
+        voList.add(new ScoreVO("human1", 0.0, 0.0, 0.0));
+        voList.add(new ScoreVO("human2", 0.0, 0.0, 0.0));
+        voList.add(new ScoreVO("human3", 0.0, 0.0, 0.0));
 
         return voList;
     }
@@ -75,18 +86,18 @@ public class DemoController {
     @ResponseBody
     public ArrayList<ResultVO> getResultEntityFromDatabase() {
         ArrayList<ResultVO> voList = new ArrayList<>();
-//        ArrayList<ResultEntity> resultEntityList = databaseUtil.getResultEntityFromDatabase();
-//        for (ResultEntity resultEntity : resultEntityList) {
-//            voList.add(new ResultVO(resultEntity.getId(), resultEntity.getGroup_id(), resultEntity.getSubject(),
-//                    resultEntity.getTool(), resultEntity.getTime_budget(), resultEntity.getBC(),
-//                    resultEntity.getMC(), resultEntity.getTotal(), resultEntity.getTime_start(), resultEntity.getTime_end()));
-//        }
+        ArrayList<ResultEntity> resultEntityList = databaseUtil.getResultEntityFromDatabase();
+        for (ResultEntity resultEntity : resultEntityList) {
+            voList.add(new ResultVO(resultEntity.getId(), resultEntity.getGroup_id(), resultEntity.getSubject(),
+                    resultEntity.getTool(), resultEntity.getTime_budget(), resultEntity.getBC(),
+                    resultEntity.getMC(), resultEntity.getTotal(), resultEntity.getTime_start(), resultEntity.getTime_end()));
+        }
 
         // 测试用
-        voList.add(new ResultVO(1, 1, "MoreTriangle", "Randoop",
-                30, 85, 98, 90, "10", "20"));
-        voList.add(new ResultVO(2, 1, "MoreTriangle", "Evosuite",
-                30, 85, 98, 90, "10", "20"));
+//        voList.add(new ResultVO(1, 1, "MoreTriangle", "Randoop",
+//                30, 85, 98, 90, "10", "20"));
+//        voList.add(new ResultVO(2, 1, "MoreTriangle", "Evosuite",
+//                30, 85, 98, 90, "10", "20"));
 
         return voList;
     }

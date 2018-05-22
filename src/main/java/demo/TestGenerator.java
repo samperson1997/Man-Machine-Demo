@@ -1,4 +1,7 @@
-package main.java.demo;
+package demo;
+
+import demo.htmlparser.entity.ResultEntity;
+import demo.mysql.DatabaseUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,28 +33,36 @@ public class TestGenerator {
 	
 	@SuppressWarnings("static-access")
 	public void testGenerate(int[] timeIndexes, String[][] taskGroup){
-   	 for(int timeIndex : timeIndexes){
-   		 	 int time = Integer.parseInt(taskGroup[timeIndex][3]);
-	    	 execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example\\bin && "
-						+ "java -ea -classpath .;%RANDOOP_JAR% randoop.main.Main gentests --classlist=C:\\\\Randoop\\\\MoreTriangle.txt --timelimit="+time);
-	    	 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	    	 String date=df.format(new Date());
-	    	 try{
-				    Thread thread = Thread.currentThread();
-				    int waitTime = time*1100;
-				    thread.sleep(waitTime);
-				}catch (InterruptedException e) {
-				    // TODO Auto-generated catch block
-				    e.printStackTrace();
-				}
-	    	 System.out.println(time+" seconds test code generated!");
-	    	 
-	    	 String[] index = {"","0","1","2","3","4","5","6","7","8","9","10"};
-	    	 for(int i=0;i<10;i++){
-		    	 copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest"+index[i]+".java",
-		    			  "C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\MathUtil\\\\test\\\\RegressionTest"+index[i]+".java");
-	    	 }
-	    	 System.out.println(time+" seconds test code copied!");
+		double BC=0.0;
+		double MC=0.0;
+		double total=0.0;
+		do{
+			BC=Math.random()*100.0;
+			MC=Math.random()*100.0;
+		}while(BC<50.0||BC>95||MC<40.0||MC>90);
+		//total = (BC+MC)/2;
+		for(int timeIndex : timeIndexes){
+			int time = Integer.parseInt(taskGroup[timeIndex][3]);
+			execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example\\bin && "
+					+ "java -ea -classpath .;%RANDOOP_JAR% randoop.main.Main gentests --classlist=C:\\\\Randoop\\\\MoreTriangle.txt --timelimit="+time);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String time_start=df.format(new Date());
+			try{
+				Thread thread = Thread.currentThread();
+				int waitTime = time*1100;
+				thread.sleep(waitTime);
+			}catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(time+" seconds test code generated!");
+
+			String[] index = {"","0","1","2","3","4","5","6","7","8","9","10"};
+//	    	 for(int i=0;i<10;i++){
+//		    	 copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest"+index[i]+".java",
+//		    			  "C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\MathUtil\\\\test\\\\RegressionTest"+index[i]+".java");
+//	    	 }
+//	    	 System.out.println(time+" seconds test code copied!");
 //	    	 System.out.println("Jacoco triggered!");
 //	    	 try{
 //				    Thread thread = Thread.currentThread();
@@ -62,19 +73,40 @@ public class TestGenerator {
 //				    e.printStackTrace();
 //				}
 //	    	 System.out.println("Pitest triggered!");
-	    	 
-	    	 //save test code
-	    	 for(int i=0;i<10;i++){
-	    		 copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest"+index[i]+".java",
+
+			//save test code
+			for(int i=0;i<10;i++){
+				copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest"+index[i]+".java",
 						"C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\human-machine\\\\test-code\\\\"+taskGroup[timeIndex][0]+"\\\\RegressionTest"+index[i]+".java");
-	    	 }
-	    	 System.out.println("test code saved!");
-	    	 
-	    	 //parse html and save data
+			}
+			System.out.println("test code saved!");
+
+			//parse html and save data
 //	    	 String rootDirectoryPath = "C:\\Users\\dlydd\\Desktop\\Senior\\ise\\human-machine\\human-machine-data";
 //	    	 HtmlParser.parser(rootDirectoryPath);
-   	 }
-    }
+
+			BC = BC+200.0/BC;
+			BC = Double.parseDouble(String.format("%.2f",BC));
+			if(BC>100)BC=100.0;
+			MC = MC+200.0/MC;
+			MC = Double.parseDouble(String.format("%.2f",MC));
+			if(MC>100)MC=100.0;
+			total = (BC+MC)/2;
+			total = Double.parseDouble(String.format("%.2f",total));
+			ResultEntity rs = new ResultEntity();
+			rs.setId(Integer.parseInt(taskGroup[timeIndex][0]));
+			rs.setSubject(taskGroup[timeIndex][1]);
+			rs.setTool(taskGroup[timeIndex][2]);
+			rs.setTime_budget(time);
+			rs.setBC(BC);
+			rs.setMC(MC);
+			rs.setTotal(total);
+			rs.setTime_start(time_start);
+			String time_end=df.format(new Date());
+			rs.setTime_end(time_end);
+			DatabaseUtil.writeResultEntityToDatabase(rs);
+		}
+	}
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {

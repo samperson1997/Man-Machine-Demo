@@ -24,7 +24,7 @@ public class DatabaseUtil {
 	// driver name
 	private final static String driver = "com.mysql.jdbc.Driver";
 	// url
-    private final static String url = "jdbc:mysql://localhost:3306/human_machine?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    private final static String url = "jdbc:mysql://localhost:3306/human_machine?serverTimezone=UTC&characterEncoding=utf-8";
     // username
     private final static String user = "root";
     // password
@@ -42,16 +42,18 @@ public class DatabaseUtil {
 	    try {
 	    	Class.forName(driver);
 	        con = DriverManager.getConnection(url,user,password);
-	        preparedStatement = con.prepareStatement("insert into human_machine (id,subject,tool,time_budget,BC,MC,total) "
-                    + "values(?,?,?,?,?,?,?)");
+	        preparedStatement = con.prepareStatement("insert into human_machine (id,subject,tool,time_budget,BC,MC,total,time_start,time_end) "
+                    + "values(?,?,?,?,?,?,?,?,?)");
 	        for (ResultEntity resultEntity : resultEntityList) {
-	            preparedStatement.setInt(1, resultEntity.getGroup_id());      
+	            preparedStatement.setInt(1, resultEntity.getId());
 	            preparedStatement.setString(2, resultEntity.getSubject());
 	            preparedStatement.setString(3, resultEntity.getTool());              
 	            preparedStatement.setInt(4, resultEntity.getTime_budget());    
 	            preparedStatement.setDouble(5, resultEntity.getBC());              
 	            preparedStatement.setDouble(6, resultEntity.getMC());    
-	            preparedStatement.setDouble(7, resultEntity.getTotal());  
+	            preparedStatement.setDouble(7, resultEntity.getTotal());
+				preparedStatement.setString(8,resultEntity.getTime_start());
+				preparedStatement.setString(9,resultEntity.getTime_end());
 	            int count = preparedStatement.executeUpdate();
 	            if (count == 1) {
 	            	System.out.println("Insert to table 'human_machine' success!");
@@ -87,26 +89,32 @@ public class DatabaseUtil {
      * 
      */
 	public static void writeResultEntityToDatabase(ResultEntity resultEntity) {
+//		System.out.println(resultEntity.getId());
+//		System.out.println(resultEntity.getTime_start());
+//		System.out.println(resultEntity.getTime_end());
 		// new Connection object
         Connection con = null; 
         PreparedStatement preparedStatement = null;
         try {
             // load driver program
             Class.forName(driver);
-            // 1.getConnection() method�Mconnect to mySQL
+            // connect to mySQL
             con = DriverManager.getConnection(url,user,password);
             if(!con.isClosed())
                 System.out.println("Succeeded connecting to the Database!");
             //pre execute add data,there are two parameters--"?"
-            preparedStatement = con.prepareStatement("insert into human_machine (id,subject,tool,time_budget,BC,MC,total) "
-                    + "values(?,?,?,?,?,?,?)");
-            preparedStatement.setInt(1, resultEntity.getGroup_id());      
+            preparedStatement = con.prepareStatement("insert into human_machine (id,subject,tool,time_budget,BC,MC,total,time_start,time_end) "
+                    + "values(?,?,?,?,?,?,?,?,?)");
+
+            preparedStatement.setInt(1, resultEntity.getId());
             preparedStatement.setString(2, resultEntity.getSubject());
             preparedStatement.setString(3, resultEntity.getTool());              
             preparedStatement.setInt(4, resultEntity.getTime_budget());    
             preparedStatement.setDouble(5, resultEntity.getBC());              
             preparedStatement.setDouble(6, resultEntity.getMC());    
-            preparedStatement.setDouble(7, resultEntity.getTotal());  
+            preparedStatement.setDouble(7, resultEntity.getTotal());
+			preparedStatement.setString(8,resultEntity.getTime_start());
+			preparedStatement.setString(9,resultEntity.getTime_end());
             int count = preparedStatement.executeUpdate();
             if (count == 1) {
             	System.out.println("insert one record successfully!");
@@ -140,14 +148,14 @@ public class DatabaseUtil {
         try {
             // load driver program
             Class.forName(driver);
-            // 1.getConnection() method�Mconnect to mySQL
+            // connect to mySQL
             con = DriverManager.getConnection(url,user,password);
             String sql = "select * from human_machine";
             Statement state = con.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()){
             	ResultEntity re = new ResultEntity();
-            	re.setGroup_id(rs.getInt("id"));
+            	re.setId(rs.getInt("id"));
             	re.setSubject(rs.getString("subject"));
             	re.setTool(rs.getString("tool"));
             	re.setTime_budget(rs.getInt("time_budget"));
@@ -173,8 +181,36 @@ public class DatabaseUtil {
 	/*
 	 * get scores from database
 	 */
-	public ArrayList<ScorePO> getScoreFromDatabase(){
-		return null;
-		
+	public ArrayList<ScorePO> getScoreFromDatabase(String toolName){
+		ArrayList<ScorePO> list = new ArrayList<ScorePO>();
+		Connection con = null;
+		try {
+			// load driver program
+			Class.forName(driver);
+			// 1.getConnection() methodconnect to mySQL
+			con = DriverManager.getConnection(url,user,password);
+			String sql = "select * from human_machine where tool='"+toolName+"'";
+			Statement state = con.createStatement();
+			ResultSet rs = state.executeQuery(sql);
+			ScorePO spo = new ScorePO();
+			spo.setBC(0);
+			spo.setMC(0);
+			spo.setTotal(0);
+			while(rs.next()){
+				spo.setBC(rs.getDouble("BC"));
+				spo.setMC(rs.getDouble("MC"));
+				spo.setTotal(rs.getDouble("total"));
+			}
+			list.add(spo);
+			rs.close();
+			state.close();
+			con.close();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 }
