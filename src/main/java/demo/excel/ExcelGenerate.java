@@ -44,7 +44,7 @@ public class ExcelGenerate {
 		int count=1;
 		for(ResultEntity re:list){
 			HSSFRow row = sheet.createRow(count);
-			row.createCell(0).setCellValue(re.getGroup_id());
+			row.createCell(0).setCellValue(re.getId());
 			row.createCell(1).setCellValue(re.getSubject());
 			row.createCell(2).setCellValue(re.getTool());
 			row.createCell(3).setCellValue(re.getTime_budget());
