@@ -43,8 +43,12 @@ public class TestGenerator {
 		//total = (BC+MC)/2;
 		for(int timeIndex : timeIndexes){
 			int time = Integer.parseInt(taskGroup[timeIndex][3]);
+			if(taskGroup[timeIndex][2].equals("Randoop"))
 			execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example\\bin && "
 					+ "java -ea -classpath .;%RANDOOP_JAR% randoop.main.Main gentests --classlist=C:\\\\Randoop\\\\MoreTriangle.txt --timelimit="+time);
+			if(taskGroup[timeIndex][2].equals("Evosuite")){
+				execEvosuite(time);
+			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String time_start=df.format(new Date());
 			try{
@@ -75,9 +79,11 @@ public class TestGenerator {
 //	    	 System.out.println("Pitest triggered!");
 
 			//save test code
-			for(int i=0;i<10;i++){
-				copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest"+index[i]+".java",
-						"C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\human-machine\\\\test-code\\\\"+taskGroup[timeIndex][0]+"\\\\RegressionTest"+index[i]+".java");
+			if(taskGroup[timeIndex][2].equals("Randoop")) {
+				for (int i = 0; i < 10; i++) {
+					copyFile("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\Example\\\\bin\\\\RegressionTest" + index[i] + ".java",
+							"C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\human-machine\\\\test-code\\\\" + taskGroup[timeIndex][0] + "\\\\RegressionTest" + index[i] + ".java");
+				}
 			}
 			System.out.println("test code saved!");
 
@@ -163,7 +169,7 @@ public class TestGenerator {
 	//				,"package pitest.pitest;");
 	//		try{
 	//		    Thread thread = Thread.currentThread();
-	//		    thread.sleep(5000);//��ͣ5���������ִ��
+	//		    thread.sleep(5000);//
 	//		}catch (InterruptedException e) {
 	//		    // TODO Auto-generated catch block
 	//		    e.printStackTrace();
@@ -219,16 +225,16 @@ public class TestGenerator {
 	//	}
 	}
 	
-	public static void execEvosuite(){
-		execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example && java -jar evosuite-1.0.3.jar -target target/classes �CprojectCP target/classes �CDsearch_budget=20 �CDminimize=false �CDassertion_strategy=all");
+	public static void execEvosuite(int time){
+		execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example && java -jar evosuite-1.0.3.jar -target target/classes -projectCP target/classes -Dsearch_budget="+time+" -Dminimize=false -Dassertion_strategy=all");
 	}
 	
 	public static void saveData(int task_id,int group_id,String subject,String tool,int time_budget,double BC,double MC,double total){
-		try { //�����������ȡ�쳣��
+		try { //
 		     
-		    //�����������������ΪIP��ַ
+		    //
 		    String server="localhost";
-		    //�������ݿ���
+		    //
 		    String dbname= "human_machine";
 		    //�������ݿ��û���
 		    String user="root";
