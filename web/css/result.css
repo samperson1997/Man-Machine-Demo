@@ -1,38 +1,40 @@
 .whole-page {
+    position: fixed;
+    top: 0;
+    left: 0;
     background-image: url("../img/bg.jpg");
-    padding: 30% 0;
+    padding: 30% 50%;
     background-size: 100% 100%;
+    z-index: -1;
 }
 
 #results-wrapper {
-    position: fixed;
-    top: 10%;
-    left: 5%;
+    margin: 3% 1.5% 1.5% 3%;
+    width: 35%;
+    height: 300px;
+    display: inline-block;
     color: #555;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 1%;
-    width: 35%;
-    height: 40%;
 }
 
 #top-table, #bottom-table {
     text-align: center;
 }
 
-#top-table td, #top-table th{
+#top-table td, #top-table th {
     width: 300px;
     padding: 2% 5%;
 }
 
-#bottom-table td, #bottom-table th{
+#bottom-table td, #bottom-table th {
     width: 500px;
     padding: 1% 5%;
 }
 
 #chart-wrapper {
-    position: fixed;
-    top: 10%;
-    left: 45%;
+    margin: 3% 3% 1.5% 1.5%;
+    float: right;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 1%;
     width: 50%;
@@ -40,13 +42,10 @@
 }
 
 #table-wrapper {
-    position: fixed;
-    top: 60%;
-    left: 5%;
+    clear: both;
+    margin: 1.5% 3% 3% 3%;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 1%;
-    width: 90%;
-    height: 30%;
 }
 
 .button-wrapper {

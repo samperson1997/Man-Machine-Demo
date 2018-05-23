@@ -1,4 +1,4 @@
-window.setInterval(getResult, 10000); //
+window.setInterval(getResult, 10000);
 var chart = echarts.init(document.getElementById('chart'));
 var timeList = [0];
 var randoopList = [];
