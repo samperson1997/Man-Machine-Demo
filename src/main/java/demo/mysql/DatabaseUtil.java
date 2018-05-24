@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import demo.po.*;
@@ -150,7 +152,9 @@ public class DatabaseUtil {
             Class.forName(driver);
             // connect to mySQL
             con = DriverManager.getConnection(url,user,password);
-            String sql = "select * from human_machine";
+//			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			String time_now=df.format(new Date());
+            String sql = "select * from human_machine where time_end";
             Statement state = con.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()){

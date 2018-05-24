@@ -16,11 +16,11 @@ public class ExcelGenerate {
 
 	public static void main(String[] args){
 		ExcelGenerate eg = new ExcelGenerate();
-		eg.excelGenerate();
+		eg.excelGenerate("C:\\Users\\dlydd\\Desktop\\Senior\\ise\\human-machine\\report.xls");
 		System.out.println("report generated!");
 	}
 	
-	public void excelGenerate(){
+	public void excelGenerate(String targetPath){
 		DatabaseUtil du = new DatabaseUtil();
 		ArrayList<ResultEntity> list = du.getResultEntityFromDatabase();
 		//create HSSFWorkbook object
@@ -58,8 +58,8 @@ public class ExcelGenerate {
 		
 		//output Excel 
 		try {
-			String outputPath = "C:\\Users\\dlydd\\Desktop\\Senior\\ise\\human-machine\\report.xls";
-			FileOutputStream output=new FileOutputStream(outputPath);
+			//String targetPath = "C:\\Users\\dlydd\\Desktop\\Senior\\ise\\human-machine\\report.xls";
+			FileOutputStream output=new FileOutputStream(targetPath);
 			wb.write(output);
 			output.flush();
 			wb.close();

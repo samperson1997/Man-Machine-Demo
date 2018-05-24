@@ -112,7 +112,8 @@ public class DemoController {
     @ResponseBody
     public ResultMessageVO excelGenerate() {
 
-        excelGenerate.excelGenerate();
+        //now param is settled,need you to change
+        excelGenerate.excelGenerate("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\human-machine\\\\report.xls");
         return new ResultMessageVO(true);
     }
 }
