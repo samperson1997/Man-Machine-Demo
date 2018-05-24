@@ -15,8 +15,6 @@ function getResult() {
         data: {},
         dataType: "json",
         success: function (data) {
-
-            console.log(data);
             $("#top-table").empty();
             $("#top-table").append("<tr>\n" +
                 "                    <th></th>\n" +
@@ -57,7 +55,7 @@ function getResult() {
 
             var option = {
                 title: {
-                    text: '分数'
+                    text: '分数趋势'
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -68,9 +66,14 @@ function getResult() {
                         }
                     }
                 },
+                legend: {
+                    data: ['Randoop', 'Evosuite', 'human1', 'human2', 'human3'],
+                    x: 'right',
+                    show: 'true'
+                },
                 toolbox: {
                     feature: {
-                        saveAsImage: {}
+                        // saveAsImage: {}
                     }
                 },
                 grid: {
@@ -83,12 +86,18 @@ function getResult() {
                     {
                         type: 'category',
                         boundaryGap: false,
-                        data: timeList
+                        data: timeList,
+                        name: '时间',
+                        nameLocation: 'middle',
+                        nameGap: 20
                     }
                 ],
                 yAxis: [
                     {
-                        type: 'value'
+                        type: 'value',
+                        name: '分数',
+                        nameLocation: 'middle',
+                        nameGap: 15
                     }
                 ],
                 series: [

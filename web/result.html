@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>人机大战 Demo</title>
+    <title>慕测平台源码自动化测试系统</title>
     <link rel="stylesheet" href="css/origin.css">
     <link rel="stylesheet" href="css/button.css">
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -16,6 +16,11 @@
 <body>
 <header>
     <div class="whole-page"></div>
+
+    <div class="title-wrapper">
+        <h1>慕测平台源码自动化测试系统</h1>
+    </div>
+
     <div id="results-wrapper">
         <table id="top-table">
             <tr>
@@ -41,22 +46,11 @@
                 <th>coverage_score</th>
                 <th>mutation_score</th>
                 <th>total_score</th>
+                <th>state</th>
             </tr>
-
-
-
-
-
-
-
-
-
-
-			
         </table>
 
         <div class="button-wrapper">
-            <button class="button-blue" onclick="getReport()">生成报告</button>
             <button class="button-blue" onclick="excelGenerate()">导出报告</button>
         </div>
     </div>
@@ -69,3 +63,12 @@
 <script src="js/echarts.js"></script>
 <script src="js/result.js"></script>
 <script src="js/report.js"></script>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        getResult();
+        getReport();
+    }
+
+</script>

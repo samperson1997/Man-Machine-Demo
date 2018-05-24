@@ -1,27 +1,40 @@
+.title-wrapper {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #555;
+    margin: 2% 3% 0 3%;
+    padding: 1%;
+}
+
 .whole-page {
+    position: fixed;
+    top: 0;
+    left: 0;
     background-image: url("../img/bg.jpg");
-    padding: 30% 0;
+    padding: 30% 50%;
     background-size: 100% 100%;
+    z-index: -1;
 }
 
 #setting-wrapper {
-    position: fixed;
-    top: 10%;
-    left: 5%;
+    display: inline-block;
+    margin: 3% 1.5% 1.5% 3%;
+    width: 50%;
+    height: 500px;
     color: #555;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 1%;
-    height: 80%;
 }
 
 #task-wrapper {
-    position: fixed;
-    top: 10%;
-    left: 60%;
+    display: inline-block;
+    margin: 3% 3% 1.5% 1.5%;
+    width: 35%;
+    height: 500px;
+    float: right;
     color: #555;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 1%;
-    height: 80%;
 }
 
 #setting-table, #task-table {

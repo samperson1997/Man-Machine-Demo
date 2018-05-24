@@ -3,20 +3,25 @@ count = 0;
 function addRow() {
     if ($("#setting-id").val() != "" && $("#setting-subject").val() != "" &&
         $("#setting-tool").val() != "" && $("#setting-time").val() != "") {
-        count++;
-        $("#setting-table").append("<tr id=\"setting-table-tr-" + count + "\">\n" +
-            "                    <td id=\"setting-id-" + count + "\">" + $("#setting-id").val() + "</td>\n" +
-            "                    <td id=\"setting-subject-" + count + "\">" + $("#setting-subject").val() + "</td>\n" +
-            "                    <td id=\"setting-tool-" + count + "\">" + $("#setting-tool").val() + "</td>\n" +
-            "                    <td id=\"setting-time-" + count + "\">" + $("#setting-time").val() + "</td>\n" +
-            "                    <td><button class=\"button-red\" id=\"delete-button" + count + "\" onclick=\"deleteRow()\">删除任务</button></td>\n" +
-            "                    <td id=\"setting-choose-button-" + count + "\"><button class=\"button-blue\" id=\"choose-button" + count + "\" onclick=\"choose()\">选入任务组</button></td>\n" +
-            "                </tr>");
-        $("#setting-id").val("");
-        $("#setting-subject").val("");
-        $("#setting-tool").val("");
-        $("#setting-time").val("");
-        $("#setting-tip").text("");
+
+        if ($("#setting-time").val() <= 7200) {
+            count++;
+            $("#setting-table").append("<tr id=\"setting-table-tr-" + count + "\">\n" +
+                "                    <td id=\"setting-id-" + count + "\">" + $("#setting-id").val() + "</td>\n" +
+                "                    <td id=\"setting-subject-" + count + "\">" + $("#setting-subject").val() + "</td>\n" +
+                "                    <td id=\"setting-tool-" + count + "\">" + $("#setting-tool").val() + "</td>\n" +
+                "                    <td id=\"setting-time-" + count + "\">" + $("#setting-time").val() + "</td>\n" +
+                "                    <td><button class=\"button-red\" id=\"delete-button" + count + "\" onclick=\"deleteRow()\">删除任务</button></td>\n" +
+                "                    <td id=\"setting-choose-button-" + count + "\"><button class=\"button-blue\" id=\"choose-button" + count + "\" onclick=\"choose()\">选入任务组</button></td>\n" +
+                "                </tr>");
+            $("#setting-id").val("");
+            $("#setting-subject").val("");
+            $("#setting-tool").val("");
+            $("#setting-time").val("");
+            $("#setting-tip").text("");
+        } else {
+            $("#setting-tip").text("time_budget必须不能超过7200秒");
+        }
     } else {
         $("#setting-tip").text("请将信息填写完整");
     }

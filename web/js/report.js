@@ -31,7 +31,7 @@ function excelGenerate() {
         data: {},
         dataType: "json",
         success: function (data) {
-            alert("[用于测试] 导出报告结果为" + data.message)
+            // alert("[用于测试] 导出报告结果为" + data.message)
         }
     })
 }

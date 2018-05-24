@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>人机大战 Demo</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>慕测平台源码自动化测试系统</title>
+
     <link rel="stylesheet" href="css/origin.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/button.css">
     <script src="js/jquery-3.2.1.min.js"></script>
 
@@ -17,8 +18,12 @@
 <header>
     <div class="whole-page"></div>
 
+    <div class="title-wrapper">
+        <h1>慕测平台源码自动化测试系统</h1>
+    </div>
+
     <div id="setting-wrapper">
-        <h1>任务列表</h1>
+        <h2>任务列表</h2>
 
         <div>
             <table id="setting-table">
@@ -34,7 +39,7 @@
                     <td><input type="text" name="setting-id" id="setting-id"></td>
                     <td><input type="text" name="setting-subject" id="setting-subject"></td>
                     <td><input type="text" name="setting-tool" id="setting-tool"></td>
-                    <td><input type="text" name="setting-time" id="setting-time"></td>
+                    <td><input type="text" name="setting-time" id="setting-time" placeholder="不超过7200秒"></td>
                     <td>
                         <button class="button-blue" onclick="addRow()">添加任务</button>
                     </td>
@@ -54,7 +59,7 @@
     </div>
 
     <div id="task-wrapper">
-        <h1>待执行任务组</h1>
+        <h2>待执行任务组</h2>
 
         <div>
             <table id="task-table">
