@@ -56,6 +56,19 @@
     padding: 1%;
 }
 
-.button-wrapper {
-    margin: 5% 45%;
+#excel-button, #confirm-button {
+    margin: 5% 0 0 45%;
+}
+
+#excel-success-button {
+    margin: 5% 0 0 45%;
+    color: #0080ff;
+}
+
+#excel-path {
+    margin: 1% 0 0 30%;
+}
+
+#excel-path-input {
+    width: 40%;
 }

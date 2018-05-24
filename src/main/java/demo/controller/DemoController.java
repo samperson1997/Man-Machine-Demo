@@ -10,10 +10,7 @@ import demo.vo.ResultVO;
 import demo.vo.ScoreVO;
 import demo.vo.TaskGroupVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -59,11 +56,11 @@ public class DemoController {
 
         ArrayList<ScorePO> RpoList = databaseUtil.getScoreFromDatabase("Randoop");
         for (ScorePO po : RpoList) {
-            voList.add(new ScoreVO("Randoop",po.getBC(), po.getMC(), po.getTotal()));
+            voList.add(new ScoreVO("Randoop", po.getBC(), po.getMC(), po.getTotal()));
         }
         ArrayList<ScorePO> EpoList = databaseUtil.getScoreFromDatabase("Evosuite");
         for (ScorePO po : EpoList) {
-            voList.add(new ScoreVO("Evosuite",po.getBC(), po.getMC(), po.getTotal()));
+            voList.add(new ScoreVO("Evosuite", po.getBC(), po.getMC(), po.getTotal()));
         }
 
         //human score test data
@@ -107,13 +104,13 @@ public class DemoController {
      */
     @RequestMapping(
             value = "/report",
-            method = RequestMethod.GET
+            params = {"targetPath"},
+            method = RequestMethod.GET,
+            produces = {"application/json; charset=UTF-8"}
     )
     @ResponseBody
-    public ResultMessageVO excelGenerate() {
-
-        //now param is settled,need you to change
-        excelGenerate.excelGenerate("C:\\\\Users\\\\dlydd\\\\Desktop\\\\Senior\\\\ise\\\\human-machine\\\\report.xls");
+    public ResultMessageVO excelGenerate(@RequestParam(value = "targetPath") String targetPath) {
+        excelGenerate.excelGenerate(targetPath);
         return new ResultMessageVO(true);
     }
 }

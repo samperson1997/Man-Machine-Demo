@@ -23,15 +23,37 @@ function getReport() {
     })
 }
 
+function chooseTargetPath() {
+    $("#excel-button").fadeOut(function () {
+        $("#confirm-button").fadeIn(function () {
+            $("#excel-path").fadeIn();
+            $("#excel-path-input").fadeIn();
+        });
+    });
+
+}
+
 function excelGenerate() {
+    console.log($("#excel-path-input").text())
+
     $.ajax({
         type: "GET",
         url: "/api/report",
         contentType: "application/x-www-form-urlencoded",
-        data: {},
+        data: {
+            "targetPath": $("#excel-path-input").val()
+        },
         dataType: "json",
         success: function (data) {
-            // alert("[用于测试] 导出报告结果为" + data.message)
+            $("#excel-path").fadeOut();
+            $("#excel-path-input").fadeOut(function () {
+                $("#confirm-button").fadeOut(function () {
+                    $("#excel-success-button").fadeIn().delay(1000).fadeOut(function () {
+                        $("#excel-button").fadeIn();
+                    })
+                });
+            });
         }
     })
 }
+

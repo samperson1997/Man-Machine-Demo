@@ -51,7 +51,10 @@
         </table>
 
         <div class="button-wrapper">
-            <button class="button-blue" onclick="excelGenerate()">导出报告</button>
+            <button id="excel-button" class="button-blue" onclick="chooseTargetPath()">导出报告</button>
+            <button id="confirm-button" class="button-blue" onclick="excelGenerate()">确认导出</button>
+            <h4 id="excel-success-button">导出报告成功</h4>
+            <h5 id="excel-path">导出路径及文件名 <input type="text" id="excel-path-input" value="C:\Users\dlydd\Desktop\Senior\ise\human-machine\report.xls"></h5>
         </div>
     </div>
 </header>
@@ -69,6 +72,10 @@
     window.onload = function () {
         getResult();
         getReport();
+        $("#excel-success-button").fadeOut();
+        $("#excel-path").fadeOut();
+        $("#excel-path-input").fadeOut();
+        $("#confirm-button").fadeOut();
     }
 
 </script>
