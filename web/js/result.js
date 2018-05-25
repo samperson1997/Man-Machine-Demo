@@ -88,16 +88,16 @@ function getResult() {
                         boundaryGap: false,
                         data: timeList,
                         name: '时间',
-                        nameLocation: 'middle',
-                        nameGap: 20
+                        nameLocation: 'end',
+                        nameGap: 0
                     }
                 ],
                 yAxis: [
                     {
                         type: 'value',
                         name: '分数',
-                        nameLocation: 'middle',
-                        nameGap: 15
+                        nameLocation: 'end',
+                        nameGap: 10
                     }
                 ],
                 series: [

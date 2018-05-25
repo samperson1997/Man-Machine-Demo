@@ -11,7 +11,6 @@ function executeTask() {
         }),
         dataType: "json",
         success: function (data) {
-            // alert("[用于测试] 内容为" + JSON.stringify(taskGroup) + "的任务组已开始执行, 结果为" + data.message)
             window.open("./result.html");
         }
     });
