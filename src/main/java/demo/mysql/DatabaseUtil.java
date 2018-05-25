@@ -182,6 +182,7 @@ public class DatabaseUtil {
 		return list;
 		
 	}
+
 	/*
 	 * get scores from database
 	 */
@@ -217,4 +218,34 @@ public class DatabaseUtil {
 
 		return list;
 	}
+
+	/*
+	return the max id in database
+	 */
+	public int getMaxIdFromDatabase() {
+		int maxId=0;
+		Connection con = null;
+		try {
+			// load driver program
+			Class.forName(driver);
+			// 1.getConnection() methodconnect to mySQL
+			con = DriverManager.getConnection(url, user, password);
+			String sql = "select max(id) from human_machine";
+			Statement state = con.createStatement();
+			ResultSet rs = state.executeQuery(sql);
+			while(rs.next()){
+				maxId=rs.getInt("max(id)");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return maxId;
+	}
+
+//	public static void main(String[] args){
+//		DatabaseUtil d = new DatabaseUtil();
+//		System.out.println(d.getMaxIdFromDatabase());
+//	}
 }

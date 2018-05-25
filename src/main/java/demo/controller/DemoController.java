@@ -87,7 +87,7 @@ public class DemoController {
         for (ResultEntity resultEntity : resultEntityList) {
             voList.add(new ResultVO(resultEntity.getId(), resultEntity.getGroup_id(), resultEntity.getSubject(),
                     resultEntity.getTool(), resultEntity.getTime_budget(), resultEntity.getBC(),
-                    resultEntity.getMC(), resultEntity.getTotal(), resultEntity.getTime_start(), resultEntity.getTime_end()));
+                    resultEntity.getMC(), resultEntity.getTotal(), resultEntity.getTime_start(), resultEntity.getTime_end(),"finished"));
         }
 
         // 测试用
@@ -112,5 +112,13 @@ public class DemoController {
     public ResultMessageVO excelGenerate(@RequestParam(value = "targetPath") String targetPath) {
         excelGenerate.excelGenerate(targetPath);
         return new ResultMessageVO(true);
+    }
+
+    /*
+       return the max id in database
+     */
+    public int getMaxId(){
+        int maxId = databaseUtil.getMaxIdFromDatabase();
+        return maxId;
     }
 }

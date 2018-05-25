@@ -12,11 +12,14 @@ public class ResultVO {
     private double total;
     private String time_start;
     private String time_end;
+    private String state;
+
+
 
     public ResultVO() {
     }
 
-    public ResultVO(int id, int group_id, String subject, String tool, int time_budget, double BC, double MC, double total, String time_start, String time_end) {
+    public ResultVO(int id, int group_id, String subject, String tool, int time_budget, double BC, double MC, double total, String time_start, String time_end,String state) {
         this.id = id;
         this.group_id = group_id;
         this.subject = subject;
@@ -27,6 +30,7 @@ public class ResultVO {
         this.total = total;
         this.time_start = time_start;
         this.time_end = time_end;
+        this.state = state;
     }
 
     public String getTime_start() {
@@ -107,5 +111,13 @@ public class ResultVO {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
