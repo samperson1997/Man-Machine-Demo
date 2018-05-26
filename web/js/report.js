@@ -16,6 +16,7 @@ function getReport() {
                     "                <th>" + Math.round(data[i].bc) + "</th>\n" +
                     "                <th>" + Math.round(data[i].mc) + "</th>\n" +
                     "                <th>" + Math.round(data[i].total) + "</th>\n" +
+                    "                <th>" + Math.round(data[i].state) + "</th>\n" +
                     "            </tr>"
                 )
                 ;
