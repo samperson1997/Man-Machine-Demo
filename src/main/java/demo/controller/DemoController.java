@@ -51,22 +51,25 @@ public class DemoController {
             method = RequestMethod.GET
     )
     @ResponseBody
-    public ArrayList<ScoreVO> getScoreFromDatabase() {
-        ArrayList<ScoreVO> voList = new ArrayList<>();
+    public ArrayList<ResultVO> getScoreFromDatabase() {
+        ArrayList<ResultVO> voList = new ArrayList<>();
 
-        ArrayList<ScorePO> RpoList = databaseUtil.getScoreFromDatabase("Randoop");
-        for (ScorePO po : RpoList) {
-            voList.add(new ScoreVO("Randoop", po.getBC(), po.getMC(), po.getTotal()));
-        }
-        ArrayList<ScorePO> EpoList = databaseUtil.getScoreFromDatabase("Evosuite");
-        for (ScorePO po : EpoList) {
-            voList.add(new ScoreVO("Evosuite", po.getBC(), po.getMC(), po.getTotal()));
+        ArrayList<ResultVO> RvoList = databaseUtil.getScoreFromDatabase("Randoop");
+        for (ResultVO vo : RvoList) {
+            voList.add(vo);
+    }
+        ArrayList<ResultVO> EpoList = databaseUtil.getScoreFromDatabase("Evosuite");
+        for (ResultVO vo : EpoList) {
+            voList.add(vo);
         }
 
         //human score test data
-        voList.add(new ScoreVO("human1", 0.0, 0.0, 0.0));
-        voList.add(new ScoreVO("human2", 0.0, 0.0, 0.0));
-        voList.add(new ScoreVO("human3", 0.0, 0.0, 0.0));
+        ResultVO human1VO = new ResultVO();
+        ResultVO human2VO = new ResultVO();
+        ResultVO human3VO = new ResultVO();
+//        voList.add(new ScoreVO("human1", 0.0, 0.0, 0.0));
+//        voList.add(new ScoreVO("human2", 0.0, 0.0, 0.0));
+//        voList.add(new ScoreVO("human3", 0.0, 0.0, 0.0));
 
         return voList;
     }

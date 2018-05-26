@@ -1,3 +1,4 @@
+window.setInterval(getReport, 10000);
 function getReport() {
     $.ajax({
         type: "GET",

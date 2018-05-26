@@ -33,6 +33,12 @@ public class ResultVO {
         this.state = state;
     }
 
+    public String toString() {
+        return "[" + "id="+id+",subject=" + subject + ", tool=" + tool + ", time_budget="
+                + time_budget + ", BC=" + BC + ", MC=" + MC + ", total="
+                + total + ",state="+state+"]";
+    }
+
     public String getTime_start() {
         return time_start;
     }

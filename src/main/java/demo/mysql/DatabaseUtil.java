@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import demo.po.*;
+import demo.vo.ResultVO;
 
 
 /**
@@ -154,7 +155,7 @@ public class DatabaseUtil {
             con = DriverManager.getConnection(url,user,password);
 //			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //			String time_now=df.format(new Date());
-            String sql = "select * from human_machine where time_end";
+            String sql = "select * from human_machine";
             Statement state = con.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while(rs.next()){
@@ -186,8 +187,8 @@ public class DatabaseUtil {
 	/*
 	 * get scores from database
 	 */
-	public ArrayList<ScorePO> getScoreFromDatabase(String toolName){
-		ArrayList<ScorePO> list = new ArrayList<ScorePO>();
+	public ArrayList<ResultVO> getScoreFromDatabase(String toolName){
+		ArrayList<ResultVO> list = new ArrayList<ResultVO>();
 		Connection con = null;
 		try {
 			// load driver program
@@ -197,16 +198,19 @@ public class DatabaseUtil {
 			String sql = "select * from human_machine where tool='"+toolName+"'";
 			Statement state = con.createStatement();
 			ResultSet rs = state.executeQuery(sql);
-			ScorePO spo = new ScorePO();
-			spo.setBC(0);
-			spo.setMC(0);
-			spo.setTotal(0);
+//			vo.setBC(0);
+//			vo.setMC(0);
+//			spo.setTotal(0);
 			while(rs.next()){
-				spo.setBC(rs.getDouble("BC"));
-				spo.setMC(rs.getDouble("MC"));
-				spo.setTotal(rs.getDouble("total"));
+				ResultVO vo = new ResultVO();
+				vo.setId(rs.getInt("id"));
+				vo.setTime_budget(rs.getInt("time_budget"));
+				vo.setBC(rs.getDouble("BC"));
+				vo.setMC(rs.getDouble("MC"));
+				vo.setTotal(rs.getDouble("total"));
+				vo.setTool(toolName);
+				list.add(vo);
 			}
-			list.add(spo);
 			rs.close();
 			state.close();
 			con.close();
@@ -244,8 +248,13 @@ public class DatabaseUtil {
 		return maxId;
 	}
 
-//	public static void main(String[] args){
-//		DatabaseUtil d = new DatabaseUtil();
-//		System.out.println(d.getMaxIdFromDatabase());
-//	}
+	public static void main(String[] args){
+		DatabaseUtil d = new DatabaseUtil();
+		//System.out.println(d.getMaxIdFromDatabase());
+		ArrayList<ResultVO> list = new ArrayList<ResultVO>();
+		list=d.getScoreFromDatabase("Randoop");
+		for(ResultVO vo:list){
+			System.out.println(vo.toString());
+		}
+	}
 }

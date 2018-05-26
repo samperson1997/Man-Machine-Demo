@@ -62,8 +62,8 @@ public class MyThread {
      */
     public static void startThread(String[][] taskGroup) {
         Tread01 t1 = new Tread01(taskGroup);
-        //Tread02 t2 = new Tread02(taskGroup);
+        Tread02 t2 = new Tread02(taskGroup);
         t1.start();
-        //t2.start();
+        t2.start();
     }
 }
