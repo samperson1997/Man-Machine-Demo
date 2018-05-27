@@ -1,5 +1,5 @@
 window.setInterval(getResult, 10000);
-var time = 0;
+var time = -1;
 var chart = echarts.init(document.getElementById('chart'));
 var timeList = [0];
 
@@ -131,7 +131,7 @@ function getResult() {
                 var evosuiteScoreList = [0];
 
                 for (var i = 0; i < data.length; i++) {
-                    switch (data[i].name) {
+                    switch (data[i].tool) {
                         case "Randoop":
                             randoopList.push(data[i]);
                             randoopScoreList.push(Math.round(data[i].total));
