@@ -42,7 +42,12 @@ public class TestGenerator {
 		}while(BC<50.0||BC>95||MC<40.0||MC>90);
 		//total = (BC+MC)/2;
 		for(int timeIndex : timeIndexes){
-			int time = Integer.parseInt(taskGroup[timeIndex][3]);
+			int time = 0;
+			if(timeIndex<taskGroup.length) {
+				time = Integer.parseInt(taskGroup[timeIndex][3]);
+			}else{
+				break;
+			}
 			if(taskGroup[timeIndex][2].equals("Randoop"))
 			execCMD("cmd /k cd C:\\Users\\dlydd\\Desktop\\Senior\\ise\\Example\\bin && "
 					+ "java -ea -classpath .;%RANDOOP_JAR% randoop.main.Main gentests --classlist=C:\\\\Randoop\\\\MoreTriangle.txt --timelimit="+time);
