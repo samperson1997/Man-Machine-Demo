@@ -37,9 +37,45 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="text" name="setting-subject" id="setting-subject"></td>
-                    <td><input type="text" name="setting-tool" id="setting-tool"></td>
-                    <td><input type="text" name="setting-time" id="setting-time" placeholder="不超过7200秒"></td>
+                    <td>
+                        <select id="setting-subject">
+                            <option value="Calculator">Calculator</option>
+                            <option value="Command">Command</option>
+                            <option value="Datalog">Datalog</option>
+                            <option value="Elevator">Elevator</option>
+                            <option value="MoreTriangle">MoreTriangle</option>
+                            <option value="NaiveBayesClassifier">NaiveBayesClassifier</option>
+                            <option value="Prim">Prim</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="setting-tool">
+                            <option value="Randoop">Randoop</option>
+                            <option value="Evosuite">Evosuite</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="setting-time">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="120">120</option>
+                            <option value="180">180</option>
+                            <option value="240">240</option>
+                            <option value="300">300</option>
+                            <option value="600">600</option>
+                            <option value="1200">1200</option>
+                            <option value="2100">2100</option>
+                            <option value="3300">3300</option>
+                            <option value="4800">4800</option>
+                            <option value="6000">6000</option>
+                            <option value="6900">6900</option>
+                            <option value="7200">7200</option>
+                        </select>
+                    </td>
                     <td>
                         <button class="button-blue" onclick="addRow()">添加任务</button>
                     </td>
