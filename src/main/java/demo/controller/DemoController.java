@@ -103,6 +103,19 @@ public class DemoController {
     }
 
     /**
+     * 历史任务组
+     */
+    @RequestMapping(
+            value = "/history",
+            method = RequestMethod.GET
+    )
+    @ResponseBody
+    public String[][] getHistoryTaskGroup(){
+        String[][] taskGroup = new String[0][];
+        return taskGroup;
+    }
+
+    /**
      * 导出报告, 调用的生成excel文件的方法
      */
     @RequestMapping(
