@@ -33,16 +33,16 @@ public class TestGenerator {
 	
 	@SuppressWarnings("static-access")
 	public void testGenerate(int[] timeIndexes, String[][] taskGroup){
-		double BC=0.0;
-		double MC=0.0;
-		double total=0.0;
+		double BC;
+		double MC;
+		double total;
 		do{
 			BC=Math.random()*100.0;
 			MC=Math.random()*100.0;
 		}while(BC<50.0||BC>95||MC<40.0||MC>90);
 		//total = (BC+MC)/2;
 		for(int timeIndex : timeIndexes){
-			int time = 0;
+			int time;
 			if(timeIndex<taskGroup.length) {
 				time = Integer.parseInt(taskGroup[timeIndex][3]);
 			}else{
@@ -105,7 +105,7 @@ public class TestGenerator {
 			total = (BC+MC)/2;
 			total = Double.parseDouble(String.format("%.2f",total));
 			ResultEntity rs = new ResultEntity();
-			rs.setId(Integer.parseInt(taskGroup[timeIndex][0]));
+			//rs.setId(Integer.parseInt(taskGroup[timeIndex][0]));
 			rs.setSubject(taskGroup[timeIndex][1]);
 			rs.setTool(taskGroup[timeIndex][2]);
 			rs.setTime_budget(time);

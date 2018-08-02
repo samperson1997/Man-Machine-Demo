@@ -106,18 +106,18 @@ public class DatabaseUtil {
             if(!con.isClosed())
                 System.out.println("Succeeded connecting to the Database!");
             //pre execute add data,there are two parameters--"?"
-            preparedStatement = con.prepareStatement("insert into human_machine (id,subject,tool,time_budget,BC,MC,total,time_start,time_end) "
-                    + "values(?,?,?,?,?,?,?,?,?)");
+            preparedStatement = con.prepareStatement("insert into human_machine (subject,tool,time_budget,BC,MC,total,time_start,time_end) "
+                    + "values(?,?,?,?,?,?,?,?)");
 
-            preparedStatement.setInt(1, resultEntity.getId());
-            preparedStatement.setString(2, resultEntity.getSubject());
-            preparedStatement.setString(3, resultEntity.getTool());              
-            preparedStatement.setInt(4, resultEntity.getTime_budget());    
-            preparedStatement.setDouble(5, resultEntity.getBC());              
-            preparedStatement.setDouble(6, resultEntity.getMC());    
-            preparedStatement.setDouble(7, resultEntity.getTotal());
-			preparedStatement.setString(8,resultEntity.getTime_start());
-			preparedStatement.setString(9,resultEntity.getTime_end());
+            //preparedStatement.setInt(1, resultEntity.getId());
+            preparedStatement.setString(1, resultEntity.getSubject());
+            preparedStatement.setString(2, resultEntity.getTool());
+            preparedStatement.setInt(3, resultEntity.getTime_budget());
+            preparedStatement.setDouble(4, resultEntity.getBC());
+            preparedStatement.setDouble(5, resultEntity.getMC());
+            preparedStatement.setDouble(6, resultEntity.getTotal());
+			preparedStatement.setString(7,resultEntity.getTime_start());
+			preparedStatement.setString(8,resultEntity.getTime_end());
             int count = preparedStatement.executeUpdate();
             if (count == 1) {
             	System.out.println("insert one record successfully!");

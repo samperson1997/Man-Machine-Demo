@@ -11,7 +11,7 @@ class Tread01 extends Thread {
         TestGenerator tg = new TestGenerator();
         //int[] times01 = {6900};
         //int[] times01={10};
-        int[] timeIndexes01 = {0,2,4};
+        int[] timeIndexes01 = {0,2,4,6,8};
         System.out.println("Tread01 begin!");
         tg.testGenerate(timeIndexes01, taskGroup);
 
@@ -29,7 +29,7 @@ class Tread02 extends Thread {
         TestGenerator tg = new TestGenerator();
         //int[] times02 = {40,50,60,120,180,240,300,2100,3300};
         //int[] times02 = {50};
-        int[] timeIndexes02 = {1,3,5};
+        int[] timeIndexes02 = {1,3,5,7,9};
         System.out.println("Tread02 begin!");
         tg.testGenerate(timeIndexes02, taskGroup);
 
