@@ -1,10 +1,9 @@
 count = 0;
 
 function addRow() {
-    if ($("#setting-subject").val() != "" && $("#setting-tool").val() != "" && $("#setting-time").val() != "") {
+    if ($("#setting-subject").val() != null && $("#setting-tool").val() != null && $("#setting-time").val() != null) {
 
         if ($("#setting-time").val() <= 7200) {
-            var id = 0;
             count++;
 
             $.ajax({
@@ -14,10 +13,8 @@ function addRow() {
                 data: {},
                 dataType: "json",
                 success: function (data) {
-                    id = data + count;
-
                     $("#setting-table").append("<tr id=\"setting-table-tr-" + count + "\">\n" +
-                        "                    <td id=\"setting-id-" + count + "\">" + id + "</td>\n" +
+                        "                    <td id=\"setting-id-" + count + "\">" + count + "</td>\n" +
                         "                    <td id=\"setting-subject-" + count + "\">" + $("#setting-subject").val() + "</td>\n" +
                         "                    <td id=\"setting-tool-" + count + "\">" + $("#setting-tool").val() + "</td>\n" +
                         "                    <td id=\"setting-time-" + count + "\">" + $("#setting-time").val() + "</td>\n" +
@@ -34,7 +31,7 @@ function addRow() {
             $("#setting-tip").text("time_budget必须不能超过7200秒");
         }
     } else {
-        $("#setting-tip").text("请将信息填写完整");
+        $("#setting-tip").text("请将信息选择完整");
     }
 }
 
@@ -46,13 +43,18 @@ function deleteRow() {
 function choose() {
     var current = event.target.id.substr(13);
 
-    $("#task-table").append("<tr>\n" +
-        "                    <td>" + $("#setting-id-" + current).text() + "</td>\n" +
-        "                    <td>" + $("#setting-subject-" + current).text() + "</td>\n" +
-        "                    <td>" + $("#setting-tool-" + current).text() + "</td>\n" +
-        "                    <td>" + $("#setting-time-" + current).text() + "</td>\n" +
-        "                </tr>");
-    var detachButton = $("#choose-button" + current).remove();
+    if ($("#choose-button" + current).text() === "选入任务组") {
+        $("#task-table").append("<tr id=\"task-table-tr-" + current + "\">\n" +
+            "                    <td>" + $("#setting-id-" + current).text() + "</td>\n" +
+            "                    <td>" + $("#setting-subject-" + current).text() + "</td>\n" +
+            "                    <td>" + $("#setting-tool-" + current).text() + "</td>\n" +
+            "                    <td>" + $("#setting-time-" + current).text() + "</td>\n" +
+            "                </tr>");
+        $("#choose-button" + current).text("移出任务组");
+    } else {
+        $("#task-table-tr-" + current).remove();
+        $("#choose-button" + current).text("选入任务组");
+    }
 }
 
 function emptyTask() {

@@ -1,4 +1,5 @@
 window.setInterval(getReport, 10000);
+
 function getReport() {
     $.ajax({
         type: "GET",
@@ -7,6 +8,16 @@ function getReport() {
         data: {},
         dataType: "json",
         success: function (data) {
+            $("#bottom-table").clear();
+            $("#bottom-table").append("<tr>\n" +
+                "                <th>ID</th>\n" +
+                "                <th>subject</th>\n" +
+                "                <th>tool</th>\n" +
+                "                <th>time_budget(s)</th>\n" +
+                "                <th>coverage_score</th>\n" +
+                "                <th>mutation_score</th>\n" +
+                "                <th>total_score</th>\n" +
+                "            </tr>");
             for (var i = 0; i < data.length; i++) {
                 $("#bottom-table").append("<tr>\n" +
                     "                <th>" + data[i].id + "</th>\n" +
@@ -16,10 +27,8 @@ function getReport() {
                     "                <th>" + Math.round(data[i].bc) + "</th>\n" +
                     "                <th>" + Math.round(data[i].mc) + "</th>\n" +
                     "                <th>" + Math.round(data[i].total) + "</th>\n" +
-  //                  "                <th>" + data[i].state + "</th>\n" +
                     "            </tr>"
-                )
-                ;
+                );
             }
         }
     })
