@@ -111,7 +111,13 @@ public class DemoController {
     )
     @ResponseBody
     public String[][] getHistoryTaskGroup(){
-        String[][] taskGroup = new String[0][];
+        String[][] taskGroup ={ {"1","MoreTriangle","Randoop","10"},
+				{"2","MoreTriangle","Randoop","30"},
+				{"3","MoreTriangle","Randoop","60"},
+				{"4","MoreTriangle","Randoop","120"},
+				{"5","MoreTriangle","Randoop","240"},
+				{"6","MoreTriangle","Randoop","300"},
+				{"7","MoreTriangle","Randoop","480"}};
         return taskGroup;
     }
 
