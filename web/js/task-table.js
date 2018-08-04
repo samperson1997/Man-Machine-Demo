@@ -1,10 +1,12 @@
 function executeTask() {
     var taskGroup = getTableContent("task-table");
+
+    console.log(taskGroup)
     var longestTime = 0;
     for (var i = 0; i < taskGroup.length; i++) {
         longestTime = longestTime > parseInt(taskGroup[i][3]) ? longestTime : parseInt(taskGroup[i][3]);
     }
-    localStorage.set("longestTime", longestTime);
+    localStorage.setItem("longestTime", longestTime);
 
     $.ajax({
         method: "POST",
@@ -31,11 +33,11 @@ function getTableContent(tableId) {
     var data = [];
     var rows = mytable.rows.length;
     for (var i = 1; i < rows; i++) {
-        for (var j = 0, cells = mytable.rows[i].cells.length; j < cells; j++) {
+        for (var j = 1, cells = mytable.rows[i].cells.length; j < cells; j++) {
             if (!data[i - 1]) {
                 data[i - 1] = [];
             }
-            data[i - 1][j] = mytable.rows[i].cells[j].innerHTML;
+            data[i - 1][j - 1] = mytable.rows[i].cells[j].innerHTML;
         }
     }
     return data;

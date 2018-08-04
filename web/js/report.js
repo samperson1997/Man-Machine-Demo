@@ -8,12 +8,12 @@ function getReport() {
         data: {},
         dataType: "json",
         success: function (data) {
-            $("#bottom-table").clear();
+            $("#bottom-table").empty();
             $("#bottom-table").append("<tr>\n" +
                 "                <th>ID</th>\n" +
                 "                <th>subject</th>\n" +
                 "                <th>tool</th>\n" +
-                "                <th>timew(s)</th>\n" +
+                "                <th>time(s)</th>\n" +
                 "                <th>coverage_score</th>\n" +
                 "                <th>mutation_score</th>\n" +
                 "                <th>total_score</th>\n" +
