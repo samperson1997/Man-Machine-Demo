@@ -13,7 +13,7 @@ function getReport() {
                 "                <th>ID</th>\n" +
                 "                <th>subject</th>\n" +
                 "                <th>tool</th>\n" +
-                "                <th>time(s)</th>\n" +
+                "                <th>timew(s)</th>\n" +
                 "                <th>coverage_score</th>\n" +
                 "                <th>mutation_score</th>\n" +
                 "                <th>total_score</th>\n" +

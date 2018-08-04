@@ -42,34 +42,38 @@ function deleteRow() {
 
 function choose() {
     var current = event.target.id.substr(13);
-
-    if ($("#choose-button" + current).text() === "选入") {
-        $("#task-table").append("<tr id=\"task-table-tr-" + current + "\">\n" +
-            "                    <td>" + $("#setting-id-" + current).text() + "</td>\n" +
-            "                    <td>" + $("#setting-subject-" + current).text() + "</td>\n" +
-            "                    <td>" + $("#setting-tool-" + current).text() + "</td>\n" +
-            "                    <td>" + $("#setting-time-" + current).text() + "</td>\n" +
-            "                </tr>");
-        $("#choose-button" + current).text("移出");
-    } else {
-        $("#task-table-tr-" + current).remove();
-        $("#choose-button" + current).text("选入");
-    }
+    $("#task-table").append("<tr id=\"task-table-tr-" + current + "\">\n" +
+        "                    <td><input id=\"task-table-choose-" + current + "\"type='checkbox' /></td>\n" +
+        "                    <td>" + $("#setting-id-" + current).text() + "</td>\n" +
+        "                    <td>" + $("#setting-subject-" + current).text() + "</td>\n" +
+        "                    <td>" + $("#setting-tool-" + current).text() + "</td>\n" +
+        "                    <td>" + $("#setting-time-" + current).text() + "</td>\n" +
+        "                </tr>");
+    $("#choose-button" + current).hide();
 }
 
 function emptyTask() {
     $("#task-table").empty();
     $("#task-table").append("<tr>\n" +
+        "                    <th></th>\n" +
         "                    <th>ID</th>\n" +
         "                    <th>subject</th>\n" +
         "                    <th>tool</th>\n" +
-        "                    <th>time_budget</th>\n" +
+        "                    <th>time</th>\n" +
         "                </tr>");
 
     for (var i = 1; i <= count; i++) {
         console.log($("#setting-choose-button-" + i).children().length);
-        if ($("#setting-choose-button-" + i).children().length === 0) {
-            $("#setting-choose-button-" + i).append("<button class=\"button-blue\" id=\"choose-button" + count + "\" onclick=\"choose()\">选入任务组</button>")
+        $("#choose-button" + i).show();
+    }
+}
+
+function removeTask() {
+    for (var i = 1; i <= count; i++) {
+        console.log($("#task-table-choose-" + i).prop("checked"))
+        if ($("#task-table-choose-" + i).prop("checked")) {
+            $("#task-table-tr-" + i).remove();
+            $("#choose-button" + i).show();
         }
     }
 }

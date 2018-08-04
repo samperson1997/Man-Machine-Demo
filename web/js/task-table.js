@@ -1,6 +1,10 @@
 function executeTask() {
-    var taskGroup = getTableContent("task-table")
-    console.log(taskGroup)
+    var taskGroup = getTableContent("task-table");
+    var longestTime = 0;
+    for (var i = 0; i < taskGroup.length; i++) {
+        longestTime = longestTime > parseInt(taskGroup[i][3]) ? longestTime : parseInt(taskGroup[i][3]);
+    }
+    localStorage.set("longestTime", longestTime);
 
     $.ajax({
         method: "POST",
