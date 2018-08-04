@@ -19,7 +19,7 @@ function addRow() {
                         "                    <td id=\"setting-tool-" + count + "\">" + $("#setting-tool").val() + "</td>\n" +
                         "                    <td id=\"setting-time-" + count + "\">" + $("#setting-time").val() + "</td>\n" +
                         "                    <td><button class=\"button-red\" id=\"delete-button" + count + "\" onclick=\"deleteRow()\">删除任务</button></td>\n" +
-                        "                    <td id=\"setting-choose-button-" + count + "\"><button class=\"button-blue\" id=\"choose-button" + count + "\" onclick=\"choose()\">选入任务组</button></td>\n" +
+                        "                    <td id=\"setting-choose-button-" + count + "\"><button class=\"button-blue\" id=\"choose-button" + count + "\" onclick=\"choose()\">选入</button></td>\n" +
                         "                </tr>");
                     $("#setting-subject").val("");
                     $("#setting-tool").val("");
@@ -43,17 +43,17 @@ function deleteRow() {
 function choose() {
     var current = event.target.id.substr(13);
 
-    if ($("#choose-button" + current).text() === "选入任务组") {
+    if ($("#choose-button" + current).text() === "选入") {
         $("#task-table").append("<tr id=\"task-table-tr-" + current + "\">\n" +
             "                    <td>" + $("#setting-id-" + current).text() + "</td>\n" +
             "                    <td>" + $("#setting-subject-" + current).text() + "</td>\n" +
             "                    <td>" + $("#setting-tool-" + current).text() + "</td>\n" +
             "                    <td>" + $("#setting-time-" + current).text() + "</td>\n" +
             "                </tr>");
-        $("#choose-button" + current).text("移出任务组");
+        $("#choose-button" + current).text("移出");
     } else {
         $("#task-table-tr-" + current).remove();
-        $("#choose-button" + current).text("选入任务组");
+        $("#choose-button" + current).text("选入");
     }
 }
 
