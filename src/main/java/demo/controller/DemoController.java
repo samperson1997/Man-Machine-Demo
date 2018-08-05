@@ -4,15 +4,14 @@ import demo.MyThread;
 import demo.excel.ExcelGenerate;
 import demo.htmlparser.entity.ResultEntity;
 import demo.mysql.DatabaseUtil;
-import demo.po.ScorePO;
 import demo.vo.ResultMessageVO;
 import demo.vo.ResultVO;
-import demo.vo.ScoreVO;
 import demo.vo.TaskGroupVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/api")
@@ -57,7 +56,7 @@ public class DemoController {
         ArrayList<ResultVO> RvoList = databaseUtil.getScoreFromDatabase("Randoop");
         for (ResultVO vo : RvoList) {
             voList.add(vo);
-    }
+        }
         ArrayList<ResultVO> EpoList = databaseUtil.getScoreFromDatabase("Evosuite");
         for (ResultVO vo : EpoList) {
             voList.add(vo);
@@ -110,15 +109,20 @@ public class DemoController {
             method = RequestMethod.GET
     )
     @ResponseBody
-    public String[][] getHistoryTaskGroup(){
-        String[][] taskGroup ={ {"1","MoreTriangle","Randoop","10"},
-				{"2","MoreTriangle","Randoop","30"},
-				{"3","MoreTriangle","Randoop","60"},
-				{"4","MoreTriangle","Randoop","120"},
-				{"5","MoreTriangle","Randoop","240"},
-				{"6","MoreTriangle","Randoop","300"},
-				{"7","MoreTriangle","Randoop","480"}};
-        return taskGroup;
+    public List<String[][]> getHistoryTaskGroup() {
+        List<String[][]> taskGroupList = new ArrayList<>();
+        String[][] taskGroup = {{"1", "MoreTriangle", "Randoop", "10"},
+                {"2", "MoreTriangle", "Randoop", "30"},
+                {"3", "MoreTriangle", "Randoop", "60"},
+                {"4", "MoreTriangle", "Randoop", "120"},
+                {"5", "MoreTriangle", "Randoop", "240"},
+                {"6", "MoreTriangle", "Randoop", "300"},
+                {"7", "MoreTriangle", "Randoop", "480"}};
+
+        taskGroupList.add(taskGroup);
+        taskGroupList.add(taskGroup);
+
+        return taskGroupList;
     }
 
     /**
