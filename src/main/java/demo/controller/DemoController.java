@@ -127,6 +127,8 @@ public class DemoController {
 
     /**
      * 删除历史任务组
+     *
+     * @param historyTaskGroup
      */
     @RequestMapping(
             value = "/deleteHistory",
@@ -134,8 +136,18 @@ public class DemoController {
             consumes = {"application/json; charset=UTF-8"}
     )
     @ResponseBody
-    public void deleteHistoryTaskGroup(@RequestBody List<String[][]> historyTaskGroup) {
-        // TODO 删除历史任务组¬
+    public void deleteHistoryTaskGroup(@RequestBody String historyTaskGroup) {
+        // 前端只能传字符串 这里转化为二维数组
+        String[] temp = historyTaskGroup.split(",");
+        String[][] realHistoryTaskGroup = new String[temp.length / 4][4];
+        for (int i = 0; i < temp.length / 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                realHistoryTaskGroup[i][j] = temp[i * 4 + j];
+                System.out.print(temp[i * 4 + j] + " ");
+            }
+            System.out.println();
+        }
+        // TODO 删除realHistoryTaskGroup
     }
 
     /**
