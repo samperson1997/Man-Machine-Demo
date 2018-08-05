@@ -126,6 +126,19 @@ public class DemoController {
     }
 
     /**
+     * 删除历史任务组
+     */
+    @RequestMapping(
+            value = "/deleteHistory",
+            method = RequestMethod.POST,
+            consumes = {"application/json; charset=UTF-8"}
+    )
+    @ResponseBody
+    public void deleteHistoryTaskGroup(@RequestBody List<String[][]> historyTaskGroup) {
+        // TODO 删除历史任务组¬
+    }
+
+    /**
      * 导出报告, 调用的生成excel文件的方法
      */
     @RequestMapping(

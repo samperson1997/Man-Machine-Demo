@@ -152,7 +152,7 @@ function getResult() {
                         "                </tr>");
                     $("#top-table").append("<tr>\n" +
                         "                <th>Randoop</th>\n" +
-                        "                <th>" + Math.round(randoopList[randoopList.length - 1].total) + "</th>\n" +
+                        "                <th>" + Math.round(randoopList[randoopList.length - 1].towtal) + "</th>\n" +
                         "                <th>" + Math.round(randoopList[randoopList.length - 1].bc) + "</th>\n" +
                         "                <th>" + Math.round(randoopList[randoopList.length - 1].mc) + "</th>\n" +
                         "            </tr>");
