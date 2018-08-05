@@ -20,7 +20,7 @@
 
     <div class="top-bar" onselectstart="return false;">
 
-        <img src="img/logo.png" class="logo" />
+        <img src="img/logo.png" class="logo"/>
         <ul>
             <p>慕测平台源码自动化测试系统</p>
             <a href="index.html">
@@ -33,14 +33,56 @@
     </div>
 
     <div id="results-wrapper">
-        <table id="top-table">
-            <tr>
-                <th></th>
-                <th>总分</th>
-                <th>分支得分</th>
-                <th>变异得分</th>
-            </tr>
-        </table>
+
+        <div class="result-item machine-item">
+            <img src="img/user.png" class="user-img"/>
+            <div class="user-score">
+                <p class="name">EVOSUITE</p>
+                <p id="evosuite-total" class="total">0.00</p>
+                <p class="bc">分支覆盖 <span id="evosuite-bc">0.00</span></p>
+                <p class="mc">变异得分 <span id="evosuite-mc">0.00</span></p>
+            </div>
+        </div>
+
+        <div class="result-item machine-item">
+            <img src="img/user.png" class="user-img"/>
+            <div class="user-score">
+                <p class="name">RANDOOP</p>
+                <p id="randoop-total" class="total">0.00</p>
+                <p class="bc">分支覆盖 <span id="randoop-bc">0.00</span></p>
+                <p class="mc">变异得分 <span id="randoop-mc">0.00</span></p>
+            </div>
+        </div>
+
+        <div class="result-item man-item">
+            <img src="img/user.png" class="user-img"/>
+            <div class="user-score">
+                <p class="name">HUMAN1</p>
+                <p id="human1-total" class="total">0.00</p>
+                <p class="bc">分支覆盖 <span id="human1-bc">0.00</span></p>
+                <p class="mc">变异得分 <span id="human1-mc">0.00</span></p>
+            </div>
+        </div>
+
+        <div class="result-item man-item">
+            <img src="img/user.png" class="user-img"/>
+            <div class="user-score">
+                <p class="name">HUMAN2</p>
+                <p id="human2-total" class="total">0.00</p>
+                <p class="bc">分支覆盖 <span id="human2-bc">0.00</span></p>
+                <p class="mc">变异得分 <span id="human2-mc">0.00</span></p>
+            </div>
+        </div>
+
+        <div class="result-item man-item">
+            <img src="img/user.png" class="user-img"/>
+            <div class="user-score">
+                <p class="name">HUMAN3</p>
+                <p id="human3-total" class="total">0.00</p>
+                <p class="bc">分支覆盖 <span id="human3-bc">0.00</span></p>
+                <p class="mc">变异得分 <span id="human3-mc">0.00</span></p>
+            </div>
+        </div>
     </div>
     <div id="chart-wrapper">
         <div id="chart" style="width:100%; height: 600px;">
@@ -64,7 +106,8 @@
             <button id="excel-button" class="button-blue" onclick="chooseTargetPath()">导出报告</button>
             <button id="confirm-button" class="button-blue" onclick="excelGenerate()">确认导出</button>
             <h4 id="excel-success-button">导出报告成功</h4>
-            <h5 id="excel-path">导出路径及文件名 <input type="text" id="excel-path-input" value="C:\Users\dlydd\Desktop\Senior\ise\human-machine\report.xls"></h5>
+            <h5 id="excel-path">导出路径及文件名 <input type="text" id="excel-path-input"
+                                                value="C:\Users\dlydd\Desktop\Senior\ise\human-machine\report.xls"></h5>
         </div>
     </div>
 </header>

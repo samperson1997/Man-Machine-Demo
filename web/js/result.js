@@ -124,8 +124,6 @@ function getResult() {
                 data: {},
                 dataType: "json",
                 success: function (data) {
-                    $("#top-table").empty();
-
                     var randoopList = [];
                     var evosuiteList = [];
                     var randoopScoreList = [0];
@@ -144,42 +142,13 @@ function getResult() {
                         }
                     }
 
-                    $("#top-table").append("<tr>\n" +
-                        "                    <th></th>\n" +
-                        "                    <th>总分</th>\n" +
-                        "                    <th>BC</th>\n" +
-                        "                    <th>MC</th>\n" +
-                        "                </tr>");
-                    $("#top-table").append("<tr>\n" +
-                        "                <th>Randoop</th>\n" +
-                        "                <th>" + Math.round(randoopList[randoopList.length - 1].towtal) + "</th>\n" +
-                        "                <th>" + Math.round(randoopList[randoopList.length - 1].bc) + "</th>\n" +
-                        "                <th>" + Math.round(randoopList[randoopList.length - 1].mc) + "</th>\n" +
-                        "            </tr>");
-                    $("#top-table").append("<tr>\n" +
-                        "                <th>Evosuite</th>\n" +
-                        "                <th>" + Math.round(evosuiteList[evosuiteList.length - 1].total) + "</th>\n" +
-                        "                <th>" + Math.round(evosuiteList[evosuiteList.length - 1].bc) + "</th>\n" +
-                        "                <th>" + Math.round(evosuiteList[evosuiteList.length - 1].mc) + "</th>\n" +
-                        "            </tr>");
-                    $("#top-table").append("<tr>\n" +
-                        "                <th>human1</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "            </tr>");
-                    $("#top-table").append("<tr>\n" +
-                        "                <th>human2</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "            </tr>");
-                    $("#top-table").append("<tr>\n" +
-                        "                <th>human3</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "                <th>0</th>\n" +
-                        "            </tr>");
+                    $("#evosuite-total").text(Math.round(evosuiteList[evosuiteList.length - 1].total));
+                    $("#evosuite-bc").text(Math.round(evosuiteList[evosuiteList.length - 1].bc));
+                    $("#evosuite-mc").text(Math.round(evosuiteList[evosuiteList.length - 1].mc));
+
+                    $("#randoop-total").text(Math.round(randoopList[randoopList.length - 1].total));
+                    $("#randoop-bc").text(Math.round(randoopList[randoopList.length - 1].bc));
+                    $("#randoop-mc").text(Math.round(randoopList[randoopList.length - 1].mc));
 
                     var option = {
                         title: {

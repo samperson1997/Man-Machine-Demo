@@ -8,13 +8,48 @@
     padding: 1%;
 }
 
-#top-table, #bottom-table {
+#bottom-table {
     text-align: center;
 }
 
-#top-table td, #top-table th {
-    width: 300px;
-    padding: 2% 5%;
+.result-item {
+    margin: 2% 0;
+}
+
+.machine-item {
+    background-color: rgb(48, 113, 177);
+}
+
+.man-item {
+    background-color: rgb(231, 160, 59);
+}
+
+.user-img {
+    width: 10%;
+    display: inline-block;
+    padding: 1% 5%;
+}
+
+.user-score {
+    color: #FFF;
+    width: 70%;
+    display: inline-block;
+    padding-bottom: 4%;
+}
+
+.name {
+    font-size: 150%;
+}
+
+.bc, .mc {
+    display: inline-block;
+    margin-right: 2%;
+}
+
+.total {
+    float: right;
+    font-size: 200%;
+    margin-top: -8%;
 }
 
 #bottom-table td, #bottom-table th {

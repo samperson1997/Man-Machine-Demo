@@ -1,5 +1,5 @@
 .top-bar {
-    background-color: #6699FF;
+    background-color: rgb(48, 113, 177);
     padding: 1% 20% 1% 5%;
     width: 100%;
 }
@@ -32,7 +32,7 @@
 
 .top-bar li:hover {
     background-color: #FFF;
-    color: #6699FF;
+    color: rgb(48, 113, 177);
 }
 
 .top-bar ul {
