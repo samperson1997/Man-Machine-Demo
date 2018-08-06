@@ -2,6 +2,7 @@ window.setInterval(getResult, 10000);
 var time = -1;
 var chart = echarts.init(document.getElementById('chart'));
 var timeList = [0];
+var transverse = 1;
 
 function getResult() {
     time++;
@@ -112,11 +113,14 @@ function getResult() {
             ]
         };
         chart.setOption(option);
-    } else if (time === 1 || time === 2 || time === 3 || time === 4 || time === 5 || time === 6 ||
-        time === 12 || time === 18 || time === 24 || time === 30 || time === 60 || time === 120 ||
-        time === 210 || time === 330 || time === 480 || time === 660 || time === 690 || time === 720) {
-        if (time * 10 <= localStorage.getItem("longestTime")) {
-            timeList.push(time * 10);
+    } else if (time === getTotalTime(1) || time === getTotalTime(2) || time === getTotalTime(3) || time === getTotalTime(4) || time === getTotalTime(5) || time === getTotalTime(6) ||
+        time === getTotalTime(12) || time === getTotalTime(18) || time === getTotalTime(24) || time === getTotalTime(30) || time === getTotalTime(60) || time === 120+1 ||
+        time === 210+1 || time === 330+1 || time === 480+1 || time === 660+1 || time === 690+1 || time === 720+1) {
+        //console.log("time:"+time * 10);
+        console.log("logestTime:"+getTotalTime(parseInt(localStorage.getItem("longestTime"))/10));
+        if (time <= getTotalTime(parseInt(localStorage.getItem("longestTime"))/10)) {
+            timeList.push(transverse * 10);
+            transverse++;
             $.ajax({
                 type: "GET",
                 url: "/api/score",
@@ -142,11 +146,11 @@ function getResult() {
                         }
                     }
 
-                    $("#evosuite-total").text(Math.round(evosuiteList[evosuiteList.length - 1].total));
+                    $("#evosuite-total").text(Math.round(evosuiteScoreList[evosuiteScoreList.length - 1]));
                     $("#evosuite-bc").text(Math.round(evosuiteList[evosuiteList.length - 1].bc));
                     $("#evosuite-mc").text(Math.round(evosuiteList[evosuiteList.length - 1].mc));
 
-                    $("#randoop-total").text(Math.round(randoopList[randoopList.length - 1].total));
+                    $("#randoop-total").text(Math.round(randoopScoreList[randoopScoreList.length - 1]));
                     $("#randoop-bc").text(Math.round(randoopList[randoopList.length - 1].bc));
                     $("#randoop-mc").text(Math.round(randoopList[randoopList.length - 1].mc));
 
@@ -260,5 +264,15 @@ function getResult() {
             })
         }
     }
+}
+
+function getTotalTime(time){
+    var totalTime = 0;
+    while(time>=1){
+        totalTime+=time;
+        time--;
+    }
+    totalTime+=1;
+    return totalTime;
 }
 

@@ -111,7 +111,14 @@ public class DemoController {
     @ResponseBody
     public List<String[][]> getHistoryTaskGroup() {
         List<String[][]> taskGroupList = new ArrayList<>();
-        String[][] taskGroup = {{"1", "MoreTriangle", "Randoop", "10"},
+        String[][] taskGroup1 = {{"1", "MoreTriangle", "Randoop", "10"},
+                {"2", "MoreTriangle", "Evosuite", "10"},
+                {"3", "MoreTriangle", "Randoop", "20"},
+                {"4", "MoreTriangle", "Evosuite", "20"},
+                {"5", "MoreTriangle", "Randoop", "30"},
+                {"6", "MoreTriangle", "Evosuite", "30"}};
+
+        String[][] taskGroup2 = {{"1", "MoreTriangle", "Randoop", "10"},
                 {"2", "MoreTriangle", "Randoop", "30"},
                 {"3", "MoreTriangle", "Randoop", "60"},
                 {"4", "MoreTriangle", "Randoop", "120"},
@@ -119,8 +126,8 @@ public class DemoController {
                 {"6", "MoreTriangle", "Randoop", "300"},
                 {"7", "MoreTriangle", "Randoop", "480"}};
 
-        taskGroupList.add(taskGroup);
-        taskGroupList.add(taskGroup);
+        taskGroupList.add(taskGroup1);
+        taskGroupList.add(taskGroup2);
 
         return taskGroupList;
     }

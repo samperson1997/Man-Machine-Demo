@@ -7,7 +7,7 @@ function executeTask() {
         longestTime = longestTime > parseInt(taskGroup[i][3]) ? longestTime : parseInt(taskGroup[i][3]);
     }
     localStorage.setItem("longestTime", longestTime);
-
+    console.log("longestTime:"+longestTime);
     $.ajax({
         method: "POST",
         url: "/api/start",
